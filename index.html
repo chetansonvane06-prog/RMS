@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ra-One</title>
+
+  <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <style>
+    body {
+      background: #000;
+      color: white;
+      margin: 0;
+      overflow-x: hidden;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+    #Oval {
+      position: relative;
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .square {
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-evenly;
+      box-shadow: 0 0 25px cyan;
+      margin-bottom: 30px;
+    }
+    .circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: cyan;
+      margin: 5px;
+      animation: glow 2s infinite alternate;
+    }
+    @keyframes glow {
+      from { box-shadow: 0 0 8px cyan; transform: scale(1); }
+      to { box-shadow: 0 0 25px cyan; transform: scale(1.2); }
+    }
+    .hero-btns a {
+      margin: 10px;
+      padding: 14px 32px;
+      font-size: 18px;
+      font-weight: bold;
+      border-radius: 40px;
+      border: 2px solid rgba(0, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      color: cyan;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.4s ease-in-out;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+    .hero-btns a:hover {
+      transform: scale(1.1);
+      background: rgba(0, 255, 255, 0.15);
+      box-shadow: 0 0 25px cyan, 0 0 50px cyan;
+      border-color: cyan;
+      color: white;
+    }
+    .hero-btns a:nth-child(2) {
+      border-color: rgba(0, 255, 100, 0.6);
+      color: #00ff88;
+      box-shadow: 0 0 15px rgba(0, 255, 100, 0.3);
+    }
+    .hero-btns a:nth-child(2):hover {
+      background: rgba(0, 255, 100, 0.15);
+      box-shadow: 0 0 25px #00ff88, 0 0 50px #00ff88;
+      color: white;
+    }
+    #welcome-sequence {
+      margin-top: 25px;
+    }
+    #welcome-sequence .line {
+      font-size: 24px;
+      font-weight: bold;
+      color: cyan;
+      text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+      border-right: 2px solid cyan;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+    }
+    @keyframes neonPulse {
+      0% { text-shadow: 0 0 10px cyan, 0 0 20px cyan; color: #00eaff; }
+      50% { text-shadow: 0 0 30px cyan, 0 0 60px cyan; color: #fff; }
+      100% { text-shadow: 0 0 10px cyan, 0 0 20px cyan; color: #00eaff; }
+    }
+    #welcome-sequence .line.final {
+      animation: neonPulse 1.5s infinite alternate;
+      border-right: none;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      font-size: 32px;
+      cursor: pointer;
+      z-index: 10;
+      animation: bounce 1.5s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .dropdown-menu-custom {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid cyan;
+      border-radius: 10px;
+      padding: 10px;
+      display: none;
+      flex-direction: column;
+      z-index: 9;
+      box-shadow: 0 0 15px cyan;
+    }
+    .dropdown-menu-custom a {
+      color: cyan;
+      text-decoration: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+    .dropdown-menu-custom a:hover {
+      background: cyan;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="particles-js"></div>
+
+  <div class="menu-btn" id="menuBtn">⚙</div>
+
+  <div class="dropdown-menu-custom" id="dropdownMenu">
+    <a href="about.php">About</a>
+    <a href="contact.php">Contact</a>
+  </div>
+
+  <section id="Oval" class="container-fluid">
+    <div class="square">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+    </div>
+
+    <div id="welcome-sequence">
+      <h2 class="line"></h2>
+    </div>
+
+    <div class="hero-btns">
+      <a href="Alogin.php">Admin Login</a>
+      <a href="Slogin.php">Student Login</a>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Particles -->
+  <script>
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 100 },
+        "color": { "value": "#00ffff" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5, "random": true },
+        "size": { "value": 3, "random": true },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#00ffff",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": { "enable": true, "speed": 2 }
+      },
+      "interactivity": {
+        "events": {
+          "onhover": { "enable": true, "mode": "repulse" },
+          "onclick": { "enable": true, "mode": "push" }
+        }
+      },
+      "retina_detect": true
+    });
+
+    const menuBtn = document.getElementById("menuBtn");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    menuBtn.addEventListener("click", () => {
+      dropdownMenu.style.display = dropdownMenu.style.display === "flex" ? "none" : "flex";
+    });
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const lines = [
+        "Initializing System...",
+        "Loading Database...",
+        "Access Granted ✅",
+        "Welcome to Result Management System"
+      ];
+
+      let lineIndex = 0;
+      let charIndex = 0;
+      const speed = 80;
+      const eraseSpeed = 40;
+      const delayBetween = 1000;
+      const element = document.querySelector("#welcome-sequence .line");
+
+      function type() {
+        if (charIndex < lines[lineIndex].length) {
+          element.textContent += lines[lineIndex].charAt(charIndex);
+          charIndex++;
+          setTimeout(type, speed);
+        } else {
+          if (lineIndex === lines.length - 1) {
+            element.classList.add("final");
+          } else {
+            setTimeout(erase, delayBetween);
+          }
+        }
+      }
+
+      function erase() {
+        if (charIndex > 0) {
+          element.textContent = lines[lineIndex].substring(0, charIndex - 1);
+          charIndex--;
+          setTimeout(erase, eraseSpeed);
+        } else {
+          lineIndex++;
+          setTimeout(type, speed);
+        }
+      }
+
+      type();
+    });
+  </script>
+</body>
+</html>
